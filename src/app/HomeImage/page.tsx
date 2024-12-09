@@ -54,8 +54,8 @@ const HomeImage = () => {
           <Image
             src="/WomanPic/Women.png"
             alt="Women Banner"
-            width={2200}
-            height={2400}
+            width={2000}
+            height={2200}
             className="w-full h-auto"
           />
         </div>

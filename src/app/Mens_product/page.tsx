@@ -52,7 +52,7 @@ const products = [
   },
 ];
 
-const ProductGrid = () => {
+const Mens_product = () => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
       {products.map((product) => (
@@ -77,4 +77,4 @@ const ProductGrid = () => {
   );
 };
 
-export default ProductGrid;
+export default Mens_product;

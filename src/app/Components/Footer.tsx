@@ -29,7 +29,7 @@ const Footer = () => {
         {/* CENTER */}
         <div className="hidden lg:flex justify-between w-1/2">
           <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">COMPANY</h1>
+            <h1 className="font-medium text-lg">MENS</h1>
             <div className="flex flex-col gap-6">
               <Link href="">About Us</Link>
               <Link href="">Careers</Link>
@@ -39,7 +39,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">SHOP</h1>
+            <h1 className="font-medium text-lg">WOMEN</h1>
             <div className="flex flex-col gap-6">
               <Link href="">New Arrivals</Link>
               <Link href="">Accessories</Link>
@@ -49,7 +49,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">HELP</h1>
+            <h1 className="font-medium text-lg">CONTACT</h1>
             <div className="flex flex-col gap-6">
               <Link href="">Customer Service</Link>
               <Link href="">My Account</Link>

@@ -28,8 +28,8 @@ const Navbar_page = () => {
           </Link>
           <div className="hidden xl:flex gap-4">
             <Link href="/">HOME</Link>
-            <Link href="/Men">Men</Link>
-            <Link href="/Women">Women</Link>
+            <Link href="/Mens_selection">Men</Link>
+            <Link href="/Sale_women">Women</Link>
             <Link href="/Kids_Products">Kids</Link>
             <Link href="/Contact">Contact</Link>
           </div>
