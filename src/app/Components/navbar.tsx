@@ -5,7 +5,6 @@ import Image from "next/image";
 import SearchBar from "../Components/SearchBar";
 import dynamic from "next/dynamic";
 
-
 const NavIcons = dynamic(() => import("../Components/NavIcons"), { ssr: false });
 
 const Navbar_page = () => {
@@ -18,20 +17,21 @@ const Navbar_page = () => {
         </Link>
         <Menu />
       </div>
+
       {/* BIGGER SCREENS */}
       <div className="hidden md:flex items-center justify-between gap-8 h-full">
         {/* LEFT */}
         <div className="w-1/3 xl:w-1/2 flex items-center gap-12">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="" width={24} height={24} />
+            <Image src="/logo.png" alt="Logo" width={24} height={24} />
             <div className="text-2xl tracking-wide">ADIL</div>
           </Link>
           <div className="hidden xl:flex gap-4">
-            <Link href="/">Homepage</Link>
-            <Link href="/">Shop</Link>
-            <Link href="/">Deals</Link>
-            <Link href="/">About</Link>
-            <Link href="/">Contact</Link>
+            <Link href="/">HOME</Link>
+            <Link href="/Men">Men</Link>
+            <Link href="/Women">Women</Link>
+            <Link href="/Kids_Products">Kids</Link>
+            <Link href="/Contact">Contact</Link>
           </div>
         </div>
         {/* RIGHT */}

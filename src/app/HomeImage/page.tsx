@@ -6,7 +6,7 @@ const HomeImage = () => {
   return (
     <div>
       {/* Section for Men */}
-      <div className="">
+      <div>
         <div>
           <Image
             src="/Man.png"
@@ -49,7 +49,7 @@ const HomeImage = () => {
       </div>
 
       {/* Section for Women */}
-      <div className="">
+      <div>
         <div>
           <Image
             src="/WomanPic/Women.png"
