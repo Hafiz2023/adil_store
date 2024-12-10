@@ -9,7 +9,7 @@ const HomeImage = () => {
       <div>
         <div>
           <Image
-            src="/Man.png"
+            src="/MainPics/Man.png"
             alt="Man Banner"
             width={2000}
             height={2200}
