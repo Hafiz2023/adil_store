@@ -260,6 +260,13 @@ const products = [
     price: "Rs. 162,200.00",
     image: "/60-off-female/1 (37).jpg", // Update with actual image paths
   },
+  {
+    id: 38,
+    name: "French Terry Hoodie",
+    brand: "Fear of God",
+    price: "Rs. 162,200.00",
+    image: "/60-off-female/1 (38).jpg", // Update with actual image paths
+  },
 
   {
     id: 39,
@@ -333,7 +340,7 @@ const products = [
   },
 ];
 
-const Femela_60_0ff = () => {
+const Female_60_0ff = () => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
       {products.map((product) => (
@@ -358,4 +365,4 @@ const Femela_60_0ff = () => {
   );
 };
 
-export default Femela_60_0ff;
+export default Female_60_0ff;

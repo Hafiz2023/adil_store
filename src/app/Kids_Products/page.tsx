@@ -140,51 +140,56 @@ const products = [
     brand: "Fear of God",
     price: "Rs. 162,200.00",
     image: "/kids-denham/110915_1.jpg", // Update with actual image paths
-  }, {
+  },
+  {
     id: 21,
     name: "French Terry Hoodie",
     brand: "Fear of God",
     price: "Rs. 162,200.00",
     image: "/kids-denham/110915_2.jpg", // Update with actual image paths
-  }, {
+  },
+  {
     id: 22,
     name: "French Terry Hoodie",
     brand: "Fear of God",
     price: "Rs. 162,200.00",
     image: "/kids-denham/110915_3.jpg", // Update with actual image paths
-  }, {
+  },
+  {
     id: 23,
     name: "French Terry Hoodie",
     brand: "Fear of God",
     price: "Rs. 162,200.00",
     image: "/kids-denham/110915_4.jpg", // Update with actual image paths
-  }, {
+  },
+  {
     id: 24,
     name: "French Terry Hoodie",
     brand: "Fear of God",
     price: "Rs. 162,200.00",
     image: "/kids-denham/111273_1.jpg", // Update with actual image paths
-  }, {
+  },
+  {
     id: 25,
     name: "French Terry Hoodie",
     brand: "Fear of God",
     price: "Rs. 162,200.00",
     image: "/kids-denham/111273_2.jpg", // Update with actual image paths
-  }, {
+  },
+  {
     id: 26,
     name: "French Terry Hoodie",
     brand: "Fear of God",
     price: "Rs. 162,200.00",
     image: "/kids-denham/111273_3.jpg", // Update with actual image paths
-  }, {
+  },
+  {
     id: 27,
     name: "French Terry Hoodie",
     brand: "Fear of God",
     price: "Rs. 162,200.00",
     image: "/kids-denham/111273_4.jpg", // Update with actual image paths
   },
-
-
 ];
 
 const Kids_Products = () => {
@@ -200,7 +205,7 @@ const Kids_Products = () => {
               height={300}
               className="object-cover rounded-lg"
             />
-           </div>
+          </div>
           <div className="text-center mt-3">
             <h3 className="text-lg font-medium">{product.brand}</h3>
             <p className="text-sm text-gray-500">{product.name}</p>

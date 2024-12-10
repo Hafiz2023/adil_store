@@ -31,31 +31,29 @@ const Footer = () => {
           <div className="flex flex-col justify-between">
             <h1 className="font-medium text-lg">MENS</h1>
             <div className="flex flex-col gap-6">
-              <Link href="">About Us</Link>
-              <Link href="">Careers</Link>
-              <Link href="">Affiliates</Link>
-              <Link href="">Blog</Link>
+              <Link href="/Mens_60_off">Mens_60_off</Link>
+              <Link href="/Mens_product">Mens_product</Link>
+              <Link href="/Mens_selection">Mens_selection</Link>
+              <Link href="/New_Arrivals_Men">New_Arrivals_Men</Link>
               <Link href="">Contact Us</Link>
             </div>
           </div>
           <div className="flex flex-col justify-between">
             <h1 className="font-medium text-lg">WOMEN</h1>
             <div className="flex flex-col gap-6">
-              <Link href="">New Arrivals</Link>
-              <Link href="">Accessories</Link>
-              <Link href="">Men</Link>
-              <Link href="">Women</Link>
-              <Link href="">All Products</Link>
+              <Link href="/Female_60_0ff">Female_60_0ff</Link>
+              <Link href="/Sale_women">Sale_women</Link>
+              <Link href="/Arrivals_women">Arrivals_women</Link>
+              <Link href="/Female_60_0ff">Female_60_0ff</Link>
             </div>
           </div>
           <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">CONTACT</h1>
+            <h1 className="font-medium text-lg">KIDS</h1>
             <div className="flex flex-col gap-6">
-              <Link href="">Customer Service</Link>
-              <Link href="">My Account</Link>
-              <Link href="">Find a Store</Link>
-              <Link href="">Legal & Privacy</Link>
-              <Link href="">Gift Card</Link>
+              <Link href="/Kids_acne">Kids_acne</Link>
+              <Link href="/Kids_adidas">Kids_adidas</Link>
+              <Link href="/Kids_base">Kids_base</Link>
+              <Link href="/Kids_Products">Kids_Products</Link>
             </div>
           </div>
         </div>
@@ -98,7 +96,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <WhatsAppIcon/>
+      <WhatsAppIcon />
     </div>
   );
 };
