@@ -1,9 +1,10 @@
 import React from "react";
-import FormPage from "../Gmail/page";
+import RegisterPage from "../RegisterPage/page";
+
 
 const Contact_page = () => {
   return <div>
-    <FormPage />
+<RegisterPage/>
   </div>;
 };
 

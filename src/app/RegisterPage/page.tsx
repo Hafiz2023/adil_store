@@ -33,7 +33,7 @@ const RegisterPage = () => {
         toast({
           title: "Registration Successful",
           description: "Your account has been created.",
-          status: "success",
+          variant: "default", // Use "success" for a green popup
         });
         setTimeout(() => {
           router.push("/login"); // Redirect to login page
@@ -42,7 +42,7 @@ const RegisterPage = () => {
         toast({
           title: "Registration Failed",
           description: "Something went wrong. Please try again.",
-          status: "error",
+          variant: "destructive", // Use "destructive" for an error (red popup)
         });
       }
     } catch (error) {
@@ -50,7 +50,7 @@ const RegisterPage = () => {
       toast({
         title: "Error",
         description: "An error occurred. Please try again later.",
-        status: "error",
+        variant: "destructive",
       });
     } finally {
       setLoading(false);
@@ -102,7 +102,7 @@ const RegisterPage = () => {
         <div className="text-center mt-4">
           <p>
             Already have an account?{" "}
-            <a href="/LoginPage" className="text-blue-600 underline">
+            <a href="/login" className="text-blue-600 underline">
               Login
             </a>
           </p>

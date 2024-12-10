@@ -12,9 +12,10 @@ const HeroPage = () => {
                 <Image
                   alt="ecommerce"
                   className="object-cover object-center w-full h-full block"
-                  src="/black-weekend-2024-mens-selection/148500-3.jpg"
+                  src="/MainPics/Man.png"
                   width="200"
                   height="400"
+             
                 />
               </a>
               <div className="mt-4">
