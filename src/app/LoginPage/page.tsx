@@ -7,8 +7,6 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { useToast } from "../../components/ui/toaster";
 
-
-
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +32,7 @@ const LoginPage = () => {
         toast({
           title: "Login Successful",
           description: "Redirecting to the dashboard...",
-          status: "success",
+          variant: "default", // Corrected to "variant"
         });
         setTimeout(() => {
           router.push("/dashboard"); // Redirect to dashboard
@@ -43,7 +41,7 @@ const LoginPage = () => {
         toast({
           title: "Login Failed",
           description: "Invalid email or password.",
-          status: "error",
+          variant: "destructive", // Corrected to "variant"
         });
       }
     } catch (error) {
@@ -51,7 +49,7 @@ const LoginPage = () => {
       toast({
         title: "Error",
         description: "An error occurred. Please try again later.",
-        status: "error",
+        variant: "destructive", // Corrected to "variant"
       });
     } finally {
       setLoading(false);
@@ -103,5 +101,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-
