@@ -1,368 +1,143 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { Star, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useState } from "react";
 
 const products = [
-  {
-    id: 1,
-    name: "Mac Low Runner",
-    brand: "Fear of God",
-    price: "Rs. 223,300.00",
-    image: "/sale-women/1 (1).jpg", // Update with actual image paths
-  },
-  {
-    id: 2,
-    name: "Loafer",
-    brand: "Fear of God",
-    price: "Rs. 187,100.00",
-    image: "/sale-women/1 (2).jpg", // Update with actual image paths
-  },
-  {
-    id: 3,
-    name: "Eva Runner",
-    brand: "Fear of God",
-    price: "Rs. 52,400.00",
-    image: "/sale-women/1 (3).jpg", // Update with actual image paths
-  },
-  {
-    id: 4,
-    name: "8 Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/sale-women/1 (4).jpg", // Update with actual image paths
-  },
-  {
-    id: 5,
+  { id: 1, name: "Mac Low Runner", brand: "Fear of God", price: "$799.00", image: "/sale-women/1 (1).jpg" },
+  { id: 2, name: "Loafer", brand: "Fear of God", price: "$670.00", image: "/sale-women/1 (2).jpg" },
+  { id: 3, name: "Eva Runner", brand: "Fear of God", price: "$188.00", image: "/sale-women/1 (3).jpg" },
+  { id: 4, name: "8 Tee", brand: "Fear of God", price: "$349.00", image: "/sale-women/1 (4).jpg" },
+  { id: 5, name: "French Terry Hoodie", brand: "Fear of God", price: "$579.00", image: "/sale-women/1 (5).jpg" },
+  { id: 6, name: "Fear of God Tee", brand: "Fear of God", price: "$345.00", image: "/sale-women/1 (6).jpg" },
+  { id: 7, name: "Thunderbird Tee", brand: "Fear of God", price: "$349.00", image: "/sale-women/1 (7).jpg" },
+  ...Array.from({ length: 41 }, (_, i) => ({
+    id: i + 8,
     name: "French Terry Hoodie",
     brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (5).jpg", // Update with actual image paths
-  },
-  {
-    id: 6,
-    name: "Fear of God Tee",
-    brand: "Fear of God",
-    price: "Rs. 96,800.00",
-    image: "/sale-women/1 (6).jpg", // Update with actual image paths
-  },
-  {
-    id: 7,
-    name: "Thunderbird Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/sale-women/1 (7).jpg", // Update with actual image paths
-  },
-  {
-    id: 8,
-    name: "Mac Low Runner",
-    brand: "Fear of God",
-    price: "Rs. 223,300.00",
-    image: "/sale-women/1 (8).jpg", // Update with actual image paths
-  },
-  {
-    id: 9,
-    name: "Loafer",
-    brand: "Fear of God",
-    price: "Rs. 187,100.00",
-    image: "/sale-women/1 (9).jpg", // Update with actual image paths
-  },
-  {
-    id: 10,
-    name: "Eva Runner",
-    brand: "Fear of God",
-    price: "Rs. 52,400.00",
-    image: "/sale-women/1 (10).jpg", // Update with actual image paths
-  },
-  {
-    id: 11,
-    name: "8 Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/sale-women/1 (11).jpg", // Update with actual image paths
-  },
-  {
-    id: 12,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (12).jpg", // Update with actual image paths
-  },
-  {
-    id: 13,
-    name: "Fear of God Tee",
-    brand: "Fear of God",
-    price: "Rs. 96,800.00",
-    image: "/sale-women/1 (13).jpg", // Update with actual image paths
-  },
-  {
-    id: 14,
-    name: "Thunderbird Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/sale-women/1 (14).jpg", // Update with actual image paths
-  },
-  {
-    id: 15,
-    name: "Mac Low Runner",
-    brand: "Fear of God",
-    price: "Rs. 223,300.00",
-    image: "/sale-women/1 (15).jpg", // Update with actual image paths
-  },
-  {
-    id: 16,
-    name: "Loafer",
-    brand: "Fear of God",
-    price: "Rs. 187,100.00",
-    image: "/sale-women/1 (16).jpg", // Update with actual image paths
-  },
-  {
-    id: 17,
-    name: "Eva Runner",
-    brand: "Fear of God",
-    price: "Rs. 52,400.00",
-    image: "/sale-women/1 (17).jpg", // Update with actual image paths
-  },
-  {
-    id: 18,
-    name: "8 Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/sale-women/1 (18).jpg", // Update with actual image paths
-  },
-  {
-    id: 19,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (19).jpg", // Update with actual image paths
-  },
-  {
-    id: 20,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (20).jpg", // Update with actual image paths
-  },
-  {
-    id: 21,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (21).jpg", // Update with actual image paths
-  },
-  {
-    id: 22,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (22).jpg", // Update with actual image paths
-  },
-  {
-    id: 23,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (23).jpg", // Update with actual image paths
-  },
-  {
-    id: 24,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (24).jpg", // Update with actual image paths
-  },
-  {
-    id: 25,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (25).jpg", // Update with actual image paths
-  },
-  {
-    id: 26,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (26).jpg", // Update with actual image paths
-  },
-  {
-    id: 27,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (27).jpg", // Update with actual image paths
-  },
-  {
-    id: 28,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (28).jpg", // Update with actual image paths
-  },
-  {
-    id: 29,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (29).jpg", // Update with actual image paths
-  },
-  {
-    id: 30,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (30).jpg", // Update with actual image paths
-  },
-  {
-    id: 31,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (31).jpg", // Update with actual image paths
-  },
-  {
-    id: 32,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (32).jpg", // Update with actual image paths
-  },
-  {
-    id: 33,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (33).jpg", // Update with actual image paths
-  },
-  {
-    id: 34,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (34).jpg", // Update with actual image paths
-  },
-  {
-    id: 35,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (35).jpg", // Update with actual image paths
-  },
-  {
-    id: 36,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (36).jpg", // Update with actual image paths
-  },
-  {
-    id: 37,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (37).jpg", // Update with actual image paths
-  },
-  {
-    id: 38,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (38).jpg", // Update with actual image paths
-  },
-
-  {
-    id: 39,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (39).jpg", // Update with actual image paths
-  },
-  {
-    id: 40,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (40).jpg", // Update with actual image paths
-  },
-  {
-    id: 41,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (41).jpg", // Update with actual image paths
-  },
-  {
-    id: 42,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (42).jpg", // Update with actual image paths
-  },
-  {
-    id: 43,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (43).jpg", // Update with actual image paths
-  },
-  {
-    id: 44,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (44).jpg", // Update with actual image paths
-  },
-  {
-    id: 45,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (45).jpg", // Update with actual image paths
-  },
-  {
-    id: 46,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (46).jpg", // Update with actual image paths
-  },
-  {
-    id: 47,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (47).jpg", // Update with actual image paths
-  },
-  {
-    id: 48,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/sale-women/1 (48).jpg", // Update with actual image paths
-  },
+    price: "$579.00",
+    image: `/sale-women/1 (${i + 8}).jpg`,
+  })),
 ];
 
-const Sale_women = () => {
+export default function Sale_women() {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const handlePrev = () => {
+    setSelectedImage((prev) => (prev! > 0 ? prev! - 1 : products.length - 1));
+  };
+
+  const handleNext = () => {
+    setSelectedImage((prev) => (prev! < products.length - 1 ? prev! + 1 : 0));
+  };
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
-      {products.map((product) => (
-        <div key={product.id} className="flex flex-col items-center">
-          <div className="relative w-full">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
+      {/* --- Hero Section --- */}
+      <section className="relative w-full h-[100vh] overflow-hidden">
+        <Image
+          src="/sale-women/1 (1).jpg"
+          alt="Women's Collection Hero"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center text-white">
+          <motion.h1
+            initial={{ y: -30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-bold tracking-wide drop-shadow-lg"
+          >
+            Women’s Collection
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl"
+          >
+            Explore timeless fashion from <strong>Fear of God</strong> — designed for elegance, comfort, and style.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* --- Product Grid --- */}
+      <section className="max-w-7xl mx-auto px-4 md:px-8 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          Explore All Products
+        </h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product, index) => (
+            <motion.div
+              key={product.id}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setSelectedImage(index)}
+              className="bg-white rounded-2xl shadow-md hover:shadow-2xl overflow-hidden flex flex-col items-center cursor-pointer"
+            >
+              <div className="relative w-full h-64">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold">{product.brand}</h3>
+                <p className="text-sm text-gray-500">{product.name}</p>
+
+                {/* ⭐ Star Rating */}
+                <div className="flex justify-center mt-2 text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" />
+                  ))}
+                </div>
+
+                <p className="text-base font-bold mt-2">{product.price}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- Fullscreen Image Modal --- */}
+      {selectedImage !== null && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 transition-all">
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-5 right-5 text-white hover:text-gray-400 transition"
+          >
+            <X size={35} />
+          </button>
+          <button
+            onClick={handlePrev}
+            className="absolute left-5 text-white hover:text-gray-400 transition"
+          >
+            <ChevronLeft size={40} />
+          </button>
+
+          <div className="relative w-[90%] md:w-[60%] h-[70vh]">
             <Image
-              src={product.image}
-              alt={product.name}
-              width={300}
-              height={300}
-              className="object-cover rounded-lg"
+              src={products[selectedImage].image}
+              alt={products[selectedImage].name}
+              fill
+              className="object-contain rounded-lg"
             />
           </div>
-          <div className="text-center mt-3">
-            <h3 className="text-lg font-medium">{product.brand}</h3>
-            <p className="text-sm text-gray-500">{product.name}</p>
-            <p className="text-base font-semibold mt-1">{product.price}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
 
-export default Sale_women;
+          <button
+            onClick={handleNext}
+            className="absolute right-5 text-white hover:text-gray-400 transition"
+          >
+            <ChevronRight size={40} />
+          </button>
+        </div>
+      )}
+    </main>
+  );
+}

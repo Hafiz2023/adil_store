@@ -1,368 +1,132 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight, X, Star } from "lucide-react";
 
-const products = [
-  {
-    id: 1,
-    name: "Mac Low Runner",
-    brand: "Fear of God",
-    price: "Rs. 223,300.00",
-    image: "/new-arrivals-men/1 (1).jpg", // Update with actual image paths
-  },
-  {
-    id: 2,
-    name: "Loafer",
-    brand: "Fear of God",
-    price: "Rs. 187,100.00",
-    image: "/new-arrivals-men/1 (2).jpg", // Update with actual image paths
-  },
-  {
-    id: 3,
-    name: "Eva Runner",
-    brand: "Fear of God",
-    price: "Rs. 52,400.00",
-    image: "/new-arrivals-men/1 (3).jpg", // Update with actual image paths
-  },
-  {
-    id: 4,
-    name: "8 Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/new-arrivals-men/1 (4).jpg", // Update with actual image paths
-  },
-  {
-    id: 5,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (5).jpg", // Update with actual image paths
-  },
-  {
-    id: 6,
-    name: "Fear of God Tee",
-    brand: "Fear of God",
-    price: "Rs. 96,800.00",
-    image: "/new-arrivals-men/1 (6).jpg", // Update with actual image paths
-  },
-  {
-    id: 7,
-    name: "Thunderbird Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/new-arrivals-men/1 (7).jpg", // Update with actual image paths
-  },
-  {
-    id: 8,
-    name: "Mac Low Runner",
-    brand: "Fear of God",
-    price: "Rs. 223,300.00",
-    image: "/new-arrivals-men/1 (8).jpg", // Update with actual image paths
-  },
-  {
-    id: 9,
-    name: "Loafer",
-    brand: "Fear of God",
-    price: "Rs. 187,100.00",
-    image: "/new-arrivals-men/1 (9).jpg", // Update with actual image paths
-  },
-  {
-    id: 10,
-    name: "Eva Runner",
-    brand: "Fear of God",
-    price: "Rs. 52,400.00",
-    image: "/new-arrivals-men/1 (10).jpg", // Update with actual image paths
-  },
-  {
-    id: 11,
-    name: "8 Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/new-arrivals-men/1 (11).jpg", // Update with actual image paths
-  },
-  {
-    id: 12,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (12).jpg", // Update with actual image paths
-  },
-  {
-    id: 13,
-    name: "Fear of God Tee",
-    brand: "Fear of God",
-    price: "Rs. 96,800.00",
-    image: "/new-arrivals-men/1 (13).jpg", // Update with actual image paths
-  },
-  {
-    id: 14,
-    name: "Thunderbird Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/new-arrivals-men/1 (14).jpg", // Update with actual image paths
-  },
-  {
-    id: 15,
-    name: "Mac Low Runner",
-    brand: "Fear of God",
-    price: "Rs. 223,300.00",
-    image: "/new-arrivals-men/1 (15).jpg", // Update with actual image paths
-  },
-  {
-    id: 16,
-    name: "Loafer",
-    brand: "Fear of God",
-    price: "Rs. 187,100.00",
-    image: "/new-arrivals-men/1 (16).jpg", // Update with actual image paths
-  },
-  {
-    id: 17,
-    name: "Eva Runner",
-    brand: "Fear of God",
-    price: "Rs. 52,400.00",
-    image: "/new-arrivals-men/1 (17).jpg", // Update with actual image paths
-  },
-  {
-    id: 18,
-    name: "8 Tee",
-    brand: "Fear of God",
-    price: "Rs. 98,600.00",
-    image: "/new-arrivals-men/1 (18).jpg", // Update with actual image paths
-  },
-  {
-    id: 19,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (19).jpg", // Update with actual image paths
-  },
-  {
-    id: 20,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (20).jpg", // Update with actual image paths
-  },
-  {
-    id: 21,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (21).jpg", // Update with actual image paths
-  },
-  {
-    id: 22,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (22).jpg", // Update with actual image paths
-  },
-  {
-    id: 23,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (23).jpg", // Update with actual image paths
-  },
-  {
-    id: 24,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (24).jpg", // Update with actual image paths
-  },
-  {
-    id: 25,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (25).jpg", // Update with actual image paths
-  },
-  {
-    id: 26,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (26).jpg", // Update with actual image paths
-  },
-  {
-    id: 27,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (27).jpg", // Update with actual image paths
-  },
-  {
-    id: 28,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (28).jpg", // Update with actual image paths
-  },
-  {
-    id: 29,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (29).jpg", // Update with actual image paths
-  },
-  {
-    id: 30,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (30).jpg", // Update with actual image paths
-  },
-  {
-    id: 31,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (31).jpg", // Update with actual image paths
-  },
-  {
-    id: 32,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (32).jpg", // Update with actual image paths
-  },
-  {
-    id: 33,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (33).jpg", // Update with actual image paths
-  },
-  {
-    id: 34,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (34).jpg", // Update with actual image paths
-  },
-  {
-    id: 35,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (35).jpg", // Update with actual image paths
-  },
-  {
-    id: 36,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (36).jpg", // Update with actual image paths
-  },
-  {
-    id: 37,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (37).jpg", // Update with actual image paths
-  },
-  {
-    id: 38,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (38).jpg", // Update with actual image paths
-  },
+const products = Array.from({ length: 48 }, (_, i) => ({
+  id: i + 1,
+  name: "Fear of God Essential",
+  brand: "Fear of God",
+  price: `$${(299 + i * 10).toFixed(2)}`,
+  image: `/new-arrivals-men/1 (${i + 1}).jpg`,
+}));
 
-  {
-    id: 39,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (39).jpg", // Update with actual image paths
-  },
-  {
-    id: 40,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (40).jpg", // Update with actual image paths
-  },
-  {
-    id: 41,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (41).jpg", // Update with actual image paths
-  },
-  {
-    id: 42,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (42).jpg", // Update with actual image paths
-  },
-  {
-    id: 43,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (43).jpg", // Update with actual image paths
-  },
-  {
-    id: 44,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (44).jpg", // Update with actual image paths
-  },
-  {
-    id: 45,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (45).jpg", // Update with actual image paths
-  },
-  {
-    id: 46,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (46).jpg", // Update with actual image paths
-  },
-  {
-    id: 47,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (47).jpg", // Update with actual image paths
-  },
-  {
-    id: 48,
-    name: "French Terry Hoodie",
-    brand: "Fear of God",
-    price: "Rs. 162,200.00",
-    image: "/new-arrivals-men/1 (48).jpg", // Update with actual image paths
-  },
-];
+export default function New_Arrivals_Men() {
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-const New_Arrivals_Men = () => {
+  const openViewer = (index: number) => {
+    setCurrentIndex(index);
+    setIsViewerOpen(true);
+  };
+
+  const closeViewer = () => setIsViewerOpen(false);
+  const showNext = () => setCurrentIndex((prev) => (prev + 1) % products.length);
+  const showPrev = () =>
+    setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
-      {products.map((product) => (
-        <div key={product.id} className="flex flex-col items-center">
-          <div className="relative w-full">
+    <main className="relative bg-gradient-to-b from-gray-50 to-white text-gray-900">
+      {/* --- Hero Section --- */}
+      <section className="relative w-full h-[100vh] overflow-hidden">
+        <Image
+          src="/new-arrivals-men/1 (2).jpg"
+          alt="New Arrivals Hero"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center text-white">
+          <h1 className="text-5xl md:text-6xl font-bold drop-shadow-lg">
+            New Arrivals – Men’s Collection
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
+            Discover the latest arrivals from <strong>Fear of God</strong>,
+            where luxury meets timeless design.
+          </p>
+        </div>
+      </section>
+
+      {/* --- Product Grid --- */}
+      <section className="max-w-7xl mx-auto px-4 md:px-8 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          Explore the Collection
+        </h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product, index) => (
+            <div
+              key={product.id}
+              className="flex flex-col items-center cursor-pointer group"
+              onClick={() => openViewer(index)}
+            >
+              <div className="relative w-full overflow-hidden rounded-lg shadow-md">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={400}
+                  height={400}
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="text-center mt-3">
+                <h3 className="text-lg font-semibold">{product.brand}</h3>
+                <p className="text-sm text-gray-500">{product.name}</p>
+
+                {/* Star Rating */}
+                <div className="flex justify-center mt-1 text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" />
+                  ))}
+                </div>
+
+                <p className="text-base font-bold mt-1">{product.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- Fullscreen Image Viewer --- */}
+      {isViewerOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+          {/* Close Button */}
+          <button
+            onClick={closeViewer}
+            className="absolute top-6 right-6 text-white hover:text-gray-400"
+          >
+            <X size={32} />
+          </button>
+
+          {/* Prev Button */}
+          <button
+            onClick={showPrev}
+            className="absolute left-6 text-white hover:text-gray-400"
+          >
+            <ChevronLeft size={40} />
+          </button>
+
+          {/* Image */}
+          <div className="relative w-[90vw] h-[80vh] max-w-5xl">
             <Image
-              src={product.image}
-              alt={product.name}
-              width={300}
-              height={300}
-              className="object-cover rounded-lg"
+              src={products[currentIndex].image}
+              alt={products[currentIndex].name}
+              fill
+              className="object-contain transition-all duration-500"
             />
           </div>
-          <div className="text-center mt-3">
-            <h3 className="text-lg font-medium">{product.brand}</h3>
-            <p className="text-sm text-gray-500">{product.name}</p>
-            <p className="text-base font-semibold mt-1">{product.price}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
 
-export default New_Arrivals_Men;
+          {/* Next Button */}
+          <button
+            onClick={showNext}
+            className="absolute right-6 text-white hover:text-gray-400"
+          >
+            <ChevronRight size={40} />
+          </button>
+        </div>
+      )}
+    </main>
+  );
+}
