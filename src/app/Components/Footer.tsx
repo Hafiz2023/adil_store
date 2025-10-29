@@ -1,104 +1,137 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import WhatsAppIcon from "./WhatsAppIcon";
 
-const Footer = () => {
+export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState("");
+
+  const handleSubscribe = async () => {
+    setLoading(true);
+    setMsg("");
+    try {
+      const res = await fetch("http://127.0.0.1:8000/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setMsg("✅ " + data.message);
+        setEmail("");
+      } else {
+        setMsg("⚠️ " + data.detail);
+      }
+    } catch (err) {
+      setMsg("❌ Error connecting to server");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="py-24 px-4 md:px-8 lg:px-16 xl:32 2xl:px-64 bg-gray-100 text-sm mt-24">
+    <div className="py-24 px-6 md:px-12 lg:px-20 xl:px-32 bg-gray-100 text-sm mt-24">
       {/* TOP */}
       <div className="flex flex-col md:flex-row justify-between gap-24">
         {/* LEFT */}
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
           <Link href="/">
-            <div className="text-2xl tracking-wide">ADIL</div>
+            <div className="text-2xl font-bold tracking-wide">ADIL</div>
           </Link>
-          <p>
-            3252 Winding Way, Central Plaza, Willowbrook, CA 90210, United
-            States
-          </p>
+          <p>3252 Winding Way, Central Plaza, Willowbrook, CA 90210</p>
           <span className="font-semibold">hello@Adil.dev</span>
           <span className="font-semibold">+1 234 567 890</span>
           <div className="flex gap-6">
-            <Image src="/facebook.png" alt="" width={16} height={16} />
-            <Image src="/instagram.png" alt="" width={16} height={16} />
-            <Image src="/youtube.png" alt="" width={16} height={16} />
-            <Image src="/pinterest.png" alt="" width={16} height={16} />
-            <Image src="/x.png" alt="" width={16} height={16} />
+            {["facebook", "instagram", "youtube", "pinterest", "x"].map((s) => (
+              <Image key={s} src={`/${s}.png`} alt={s} width={20} height={20} />
+            ))}
           </div>
         </div>
+
         {/* CENTER */}
         <div className="hidden lg:flex justify-between w-1/2">
-          <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">MENS</h1>
-            <div className="flex flex-col gap-6">
-              <Link href="/Mens_60_off">Mens_60_off</Link>
-              <Link href="/Mens_product">Mens_product</Link>
-              <Link href="/Mens_selection">Mens_selection</Link>
-              <Link href="/New_Arrivals_Men">New_Arrivals_Men</Link>
-              <Link href="">Contact Us</Link>
+          {/* MENS */}
+          <div className="flex flex-col gap-4">
+            <h1 className="font-semibold text-lg">MENS</h1>
+            <div className="flex flex-col gap-2">
+              <Link href="/Mens_60_off">Mens 60% Off</Link>
+              <Link href="/Mens_product">Mens Product</Link>
+              <Link href="/Mens_selection">Mens Selection</Link>
+              <Link href="/New_Arrivals_Men">New Arrivals</Link>
+              <Link href="/Mens">All Mens</Link>
             </div>
           </div>
-          <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">WOMEN</h1>
-            <div className="flex flex-col gap-6">
-              <Link href="/Female_60_0ff">Female_60_0ff</Link>
-              <Link href="/Sale_women">Sale_women</Link>
-              <Link href="/Arrivals_women">Arrivals_women</Link>
-              <Link href="/Female_60_0ff">Female_60_0ff</Link>
+
+          {/* WOMEN */}
+          <div className="flex flex-col gap-4">
+            <h1 className="font-semibold text-lg">WOMEN</h1>
+            <div className="flex flex-col gap-2">
+              <Link href="/Female_60_off">Female 60% Off</Link>
+              <Link href="/Sale_women">Sale Women</Link>
+              <Link href="/Arrivals_women">Arrivals Women</Link>
+              <Link href="/Women">All Women</Link>
             </div>
           </div>
-          <div className="flex flex-col justify-between">
-            <h1 className="font-medium text-lg">KIDS</h1>
-            <div className="flex flex-col gap-6">
-              <Link href="/Kids_acne">Kids_acne</Link>
-              <Link href="/Kids_adidas">Kids_adidas</Link>
-              <Link href="/Kids_base">Kids_base</Link>
-              <Link href="/Kids_Products">Kids_Products</Link>
+
+          {/* KIDS */}
+          <div className="flex flex-col gap-4">
+            <h1 className="font-semibold text-lg">KIDS</h1>
+            <div className="flex flex-col gap-2">
+              <Link href="/Kids_acne">Kids Acne</Link>
+              <Link href="/Kids_adidas">Kids Adidas</Link>
+              <Link href="/Kids_base">Kids Base</Link>
+              <Link href="/Kids_Products">Kids Products</Link>
+              <Link href="/Kids">All Kids</Link>
             </div>
           </div>
         </div>
+
         {/* RIGHT */}
-        <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
-          <h1 className="font-medium text-lg">SUBSCRIBE</h1>
-          <p>
-            Be the first to get the latest news about trends, promotions, and
-            much more!
-          </p>
+        <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-6">
+          <h1 className="font-semibold text-lg">SUBSCRIBE</h1>
+          <p>Be the first to get the latest news about trends and promotions!</p>
           <div className="flex">
             <input
-              type="text"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
-              className="p-4 w-3/4"
+              className="p-3 w-3/4 rounded-l-lg border focus:ring focus:ring-gray-300"
             />
-            <button className="w-1/4 bg-lama text-white">JOIN</button>
+            <button
+              onClick={handleSubscribe}
+              disabled={loading}
+              className="w-1/4 bg-black text-white rounded-r-lg hover:bg-gray-800 transition"
+            >
+              {loading ? "..." : "JOIN"}
+            </button>
           </div>
-          <span className="font-semibold">Secure Payments</span>
+          {msg && <p className="text-sm mt-2">{msg}</p>}
+
+          <span className="font-semibold mt-4">Secure Payments</span>
           <div className="flex justify-between">
-            <Image src="/discover.png" alt="" width={40} height={20} />
-            <Image src="/skrill.png" alt="" width={40} height={20} />
-            <Image src="/paypal.png" alt="" width={40} height={20} />
-            <Image src="/mastercard.png" alt="" width={40} height={20} />
-            <Image src="/visa.png" alt="" width={40} height={20} />
+            {["discover", "skrill", "paypal", "mastercard", "visa"].map((p) => (
+              <Image key={p} src={`/${p}.png`} alt={p} width={40} height={20} />
+            ))}
           </div>
         </div>
       </div>
+
       {/* BOTTOM */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-16">
-        <div className="">© 2024 Adil Shop</div>
-        <div className="flex flex-col gap-8 md:flex-row">
-          <div className="">
-            <span className="text-gray-500 mr-4">Language</span>
-            <span className="font-medium">United States | English</span>
-          </div>
-          <div className="">
-            <span className="text-gray-500 mr-4">Currency</span>
-            <span className="font-medium">$ USD</span>
-          </div>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6 mt-16 text-gray-600">
+        <div>© 2025 Adil Shop. All rights reserved.</div>
+        <div className="flex gap-6">
+          <span>Language: English (US)</span>
+          <span>Currency: $ USD</span>
         </div>
       </div>
+
       <WhatsAppIcon />
     </div>
   );
-};
-
-export default Footer;
+}

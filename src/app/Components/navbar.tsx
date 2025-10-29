@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 
 const NavIcons = dynamic(() => import("../Components/NavIcons"), { ssr: false });
 
-const Navbar_page = () => {
+const Navbar = () => {
   return (
     <div className="h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       {/* MOBILE */}
@@ -27,7 +27,7 @@ const Navbar_page = () => {
             <div className="text-2xl tracking-wide">ADIL</div>
           </Link>
           <div className="hidden xl:flex gap-4">
-            <Link href="/">HOME</Link>
+            <Link href="/">Home</Link>
             <Link href="/Mens_selection">Men</Link>
             <Link href="/Sale_women">Women</Link>
             <Link href="/Kids_Products">Kids</Link>
@@ -44,4 +44,4 @@ const Navbar_page = () => {
   );
 };
 
-export default Navbar_page;
+export default Navbar;
