@@ -70,7 +70,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h1 className="font-semibold text-lg underline">WOMEN</h1>
             <div className="flex flex-col gap-2">
-              <Link href="/Female_60_off">Female 60% Off</Link>
+              <Link href="/Female_60_Off">Female 60% Off</Link>
               <Link href="/Sale_women">Sale Women</Link>
               <Link href="/Arrivals_women">Arrivals Women</Link>
             </div>
