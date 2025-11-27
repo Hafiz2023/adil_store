@@ -1,21 +1,19 @@
-import About from "./About/page";
-import BestSellers from "./BestSellers/page";
-
-import CustomerReviews from "./CustomerReviews/page";
-import Hero_page from "./HeroPage/page";
-import HomeImage from "./HomeImage/page";
-import Newsletter from "./Newsletter/page";
+import AboutSection from "@/components/home/AboutSection";
+import BestSellers from "@/components/home/BestSellers";
+import CustomerReviews from "@/components/home/CustomerReviews";
+import HeroSection from "@/components/home/HeroSection";
+import HomeImage from "@/components/home/HomeImage";
+import Newsletter from "@/components/home/Newsletter";
 
 export default function Home() {
   return (
     <div>
-   
       <HomeImage />
-      <Hero_page />
+      <HeroSection />
       <BestSellers />
       <CustomerReviews />
       <Newsletter />
-      <About />
+      <AboutSection />
     </div>
   );
 }

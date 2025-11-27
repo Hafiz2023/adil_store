@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 
 import { Loader2, Lock, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useStore } from "@/context/StoreContext";
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -21,34 +22,31 @@ export default function LoginPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const { login } = useStore();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      if (response.ok) {
+      // Simple hardcoded check for demo purposes
+      if (form.email && form.password) {
+        login(form.email, "admin");
         toast({
           title: "✅ Login Successful",
-          description: "Redirecting to dashboard...",
+          description: "Redirecting...",
         });
-        setTimeout(() => router.push("/dashboard"), 1500);
+        router.push("/admin/dashboard");
       } else {
-        toast({
-          title: "❌ Login Failed",
-          description: "Invalid email or password.",
-          variant: "destructive",
-        });
+        throw new Error("Invalid credentials");
       }
     } catch (error) {
       toast({
-        title: "⚠️ Server Error",
-        description: "Something went wrong. Please try again later.",
+        title: "❌ Login Failed",
+        description: "Please enter any email and password.",
         variant: "destructive",
       });
     } finally {

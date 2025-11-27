@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": "2aa462a2-3dce-4c7d-9c4b-614a3fa81cbc",
+      "name": "Hafiz Muhammad Adil",
+      "email": "adilamin374@gmail.com",
+      "password": "$2b$10$IU1Gw/nYvrFGG0UVfddIPu3PvluNyElLZXy2VIgSDSeG/jaNRB2Y2",
+      "role": "admin",
+      "createdAt": "2025-11-26T04:16:52.441Z"
+    },
+    {
+      "id": "5ec62386-b468-47fd-baee-54804cfd4c76",
+      "name": "Adil",
+      "email": "hafizadil909@gmail.com",
+      "password": "$2b$10$rX7BiUE2DS668iP8rg0xhO0bUj4S1DzJABp7epS3IOS4UzV4SHEcO",
+      "role": "user",
+      "createdAt": "2025-11-27T04:37:17.244Z"
+    }
+  ],
+  "products": []
+}
