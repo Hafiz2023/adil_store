@@ -17,7 +17,7 @@ const SLIDES = [
 
   {
     title: "Kids' Collection",
-    banner: "/Kids.jpg",
+    banner: "/kids.jpg",
   },
 ];
 
@@ -115,7 +115,8 @@ const HomeImage: React.FC = () => {
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+pPwAEdQJhO3e4OQAAAABJRU5ErkJggg=="
               onError={(e) => {
                 const target = e.currentTarget as HTMLImageElement;
-                target.src = "/placeholder.jpg";
+                target.onerror = null; // Prevent infinite loop
+                target.src = "/logo.png";
               }}
             />
             {/* Overlay & Title */}
