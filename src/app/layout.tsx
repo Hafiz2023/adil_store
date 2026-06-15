@@ -28,6 +28,7 @@ export const metadata: Metadata = {
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { StoreProvider } from "@/context/StoreContext";
+import SessionProvider from "@/components/providers/SessionProvider";
 
 // RootLayout is the main wrapper for all pages in the application
 export default function RootLayout({
@@ -41,27 +42,29 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* StoreProvider handles global state management for the store */}
-        <StoreProvider>
-          {/* ThemeProvider handles Light/Dark mode switching */}
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {/* The Navbar will appear on every page */}
-            <Navbar />
-            
-            {/* Render the specific page content */}
-            {children}
-            
-            {/* The Footer will appear on every page */}
-            <Footer />
-            
-            {/* Toaster is used to display popup notifications (toast messages) */}
-            <Toaster />
-          </ThemeProvider>
-        </StoreProvider>
+        <SessionProvider>
+          <StoreProvider>
+            {/* ThemeProvider handles Light/Dark mode switching */}
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {/* The Navbar will appear on every page */}
+              <Navbar />
+              
+              {/* Render the specific page content */}
+              {children}
+              
+              {/* The Footer will appear on every page */}
+              <Footer />
+              
+              {/* Toaster is used to display popup notifications (toast messages) */}
+              <Toaster />
+            </ThemeProvider>
+          </StoreProvider>
+        </SessionProvider>
       </body>
     </html>
   );
