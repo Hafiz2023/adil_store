@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function UserDashboard() {
-    const { data: session, status } = useSession();
+    const sessionContext = useSession();
+    const session = sessionContext?.data;
+    const status = sessionContext?.status || "unauthenticated";
     const router = useRouter();
 
     useEffect(() => {
