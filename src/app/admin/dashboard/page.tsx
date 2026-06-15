@@ -71,7 +71,7 @@ export default function AdminDashboard() {
                 </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white rounded-lg shadow-md p-8">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-xl font-bold text-gray-800">Quick Actions</h2>
                 </div>
