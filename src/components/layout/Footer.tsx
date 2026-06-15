@@ -6,6 +6,11 @@ import Link from "next/link";
 import { useState } from "react";
 import WhatsAppIcon from "@/components/shared/WhatsAppIcon";
 
+/**
+ * Footer Component
+ * Renders the application footer, including newsletter subscription,
+ * social links, and WhatsApp integration.
+ */
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);

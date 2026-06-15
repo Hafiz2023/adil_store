@@ -3,6 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+/**
+ * About Component
+ * Presents the brand story and vision in a responsive two-column layout.
+ * Features decorative background elements and image hover effects.
+ */
 export default function About() {
   return (
     <section className="relative py-24 px-6 md:px-12 lg:px-20 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">

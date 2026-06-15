@@ -21,6 +21,11 @@ const SLIDES = [
   },
 ];
 
+/**
+ * HomeImage Component
+ * Renders an auto-playing image slider for the main homepage banner.
+ * Supports manual navigation, touch swiping, and pauses on hover.
+ */
 const HomeImage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);

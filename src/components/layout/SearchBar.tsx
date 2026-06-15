@@ -3,6 +3,11 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+/**
+ * SearchBar Component
+ * Renders a search input field.
+ * Handles form submission to redirect users to the search results page.
+ */
 const SearchBar = () => {
   const router = useRouter();
 

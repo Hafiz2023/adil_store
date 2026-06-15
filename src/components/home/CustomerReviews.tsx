@@ -24,6 +24,11 @@ const reviews = [
   },
 ];
 
+/**
+ * CustomerReviews Component
+ * Displays a grid of customer testimonials and ratings.
+ * Uses framer-motion for scroll-triggered animations.
+ */
 export default function CustomerReviews() {
   return (
     <section className="py-16 bg-gradient-to-b from-white to-gray-50 px-6 md:px-12 lg:px-20">

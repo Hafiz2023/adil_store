@@ -72,6 +72,11 @@ const products = [
   },
 ];
 
+/**
+ * Hero_page Component
+ * Displays the featured collection with a responsive grid of products.
+ * Uses framer-motion for hover effects on product cards.
+ */
 const Hero_page = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12 px-6">

@@ -2,6 +2,11 @@
 
 import { motion } from "framer-motion";
 
+/**
+ * Newsletter Component
+ * Provides a subscription form for users to join the mailing list.
+ * Includes form validation and responsive layout.
+ */
 export default function Newsletter() {
   return (
     <section className="bg-gray-400 text-white py-16 px-6 md:px-12 lg:px-20 text-center">

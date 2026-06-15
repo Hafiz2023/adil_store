@@ -4,6 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+/**
+ * Menu Component
+ * Renders a hamburger menu for mobile navigation.
+ * Toggles a dropdown overlay with primary navigation links.
+ */
 const Menu = () => {
   const [open, setOpen] = useState(false);
 

@@ -14,6 +14,11 @@ interface Product {
   rating?: number;
 }
 
+/**
+ * BestSellers Component
+ * Fetches and displays a list of the top-selling products.
+ * Includes a loading state and responsive grid layout.
+ */
 export default function BestSellers() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);

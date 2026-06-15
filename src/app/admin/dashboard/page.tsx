@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 export default function AdminDashboard() {
-    const router = useRouter();
     const [stats, setStats] = useState({
         products: 0,
         users: 0,
